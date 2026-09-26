@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN" data-page="home">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>AI 资讯</title>
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/admin.css?v=20260927tmpl" />
+</head>
+<body>
+  <a class="skip" href="#main">跳到内容</a>
+  <div class="app">
+    <aside class="rail" aria-label="后台导航">
+      <a class="brand" href="#/home" aria-label="回到首页">
+        <img src="/avatar.png" alt="" width="36" height="36" />
+        <span>
+          <b data-brand="name">AI 资讯</b>
+          <small data-brand="nameEn">Newsbot</small>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="#/home" data-nav="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2 3 11h2v9h6v-6h2v6h6v-9h2L12 3.2z" /></svg>
+          <span class="nav-label">首页</span>
+        </a>
+        <a href="#/board" data-nav="board">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v14H4V5zm8 0h8v8h-8V5zm0 10h8v4h-8v-4z" /></svg>
+          <span class="nav-label">群看板</span>
+          <span class="nav-count" id="nav-attention" hidden></span>
+        </a>
+        <a href="#/activity" data-nav="activity">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v2H5V6zm0 5h10v2H5v-2zm0 5h14v2H5v-2z" /></svg>
+          <span class="nav-label">动态</span>
+        </a>
+        <a href="#/guide" data-nav="guide">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h11a2 2 0 0 1 2 2v16H8a3 3 0 0 0-3 3V6a3 3 0 0 1 3-3h10v2H8a1 1 0 0 0-1 1v14.2c.3-.13.64-.2 1-.2h10V5H6V3z" /></svg>
+          <span class="nav-label">教程</span>
+        </a>
+        <a href="#/settings" data-nav="settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.03 7.03 0 0 0-1.63-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.8a.5.5 0 0 0-.49.42l-.36 2.54c-.59.24-1.13.55-1.63-.94l-2.39-.96a.5.5 0 0 0-.6.22L2.71 8.48a.5.5 0 0 0 .12.64L4.86 10.7c-.04.31-.06.63-.06.94s.02.63.06.94L2.83 14.16a.5.5 0 0 0-.12.64l1.92 3.32c.14.24.43.34.69.22l2.39-.96c.5.39 1.04.7 1.63.94l.36 2.54c.05.24.25.42.49.42h3.8c.24 0 .44-.18.49-.42l.36-2.54c.59-.24 1.13-.55 1.63-.94l2.39.96c.26.12.55.02.69-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z" /></svg>
+          <span class="nav-label">设置</span>
+        </a>
+      </nav>
+      <div class="rail-foot">
+        <div class="health" id="health" aria-label="链路状态"></div>
+        <p class="rail-note" id="rail-note">每日 09:00 早报 · 额度不限制</p>
+      </div>
+    </aside>
+
+    <div class="stage">
+      <header class="topbar">
+        <div class="topbar-copy">
+          <h1 id="page-title">首页</h1>
+          <p id="page-sub">群里的 AI 资讯简报员</p>
+        </div>
+        <div class="topbar-actions">
+          <span id="ready-pill" class="pill">加载中</span>
+        </div>
+      </header>
+
+      <div id="banner" class="banner" hidden></div>
+
+      <main id="main">
+        <section class="view" id="view-home" data-view="home">
+          <div class="home">
+            <header class="home-hero">
+              <h1 class="home-title" data-brand="name">AI 资讯</h1>
+              <p class="home-slogan" data-brand="short">群里的 AI 资讯简报员</p>
+            </header>
+            <div id="home-live" class="home-live" aria-live="polite"></div>
+            <ul class="home-features">
+              <li>
+                <h2>群里 @ 才答</h2>
+                <p>每个群单独开通。回复发在群里，不进话题。</p>
+              </li>
+              <li>
+                <h2>每日早报</h2>
+                <p>时间在设置里改，默认 09:00。当天只发一次，各群同一份稿。</p>
+              </li>
+              <li>
+                <h2>只答 AI 资讯</h2>
+                <p>今天、热点、日报、AA榜 / 模型榜、Tibo重置 / Codex 额度，或某个公司 / 模型。</p>
+              </li>
+            </ul>
+            <div class="home-more">
+              <a class="home-entry" href="#/guide">
+                <span class="home-kicker">怎么用</span>
+                <h2>从接到群里能问</h2>
+                <ol>
+                  <li>设置里接好飞书应用和 Grok 订阅</li>
+                  <li>把 <span data-brand="name">AI 资讯</span> 拉进目标群</li>
+                  <li>看板里打开「开通」或「早报」</li>
+                </ol>
+                <span class="home-entry-go">完整教程，含飞书权限</span>
+              </a>
+              <article class="home-entry">
+                <span class="home-kicker">边界</span>
+                <h2>只答资讯，不闲聊</h2>
+                <ul>
+                  <li>不写代码、不闲聊、不调搜索</li>
+                  <li>私聊默认关，和群开通互相独立</li>
+                  <li>简报不写数据来自哪，标题链到原文</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-guide" data-view="guide" hidden>
+          <article class="guide">
+            <p class="guide-lead"><span data-brand="short">群里的 AI 资讯简报员</span>。资料来自 AIHOT，Grok 写成中文简报。飞书里搜应用名 <b data-brand="name">AI 资讯</b>。</p>
+            <nav class="guide-toc" aria-label="教程目录">
+              <button type="button" data-jump="g-feishu">飞书应用</button>
+              <button type="button" data-jump="g-perm">权限</button>
+              <button type="button" data-jump="g-grok">Grok</button>
+              <button type="button" data-jump="g-group">拉群</button>
+              <button type="button" data-jump="g-ask">怎么问</button>
+              <button type="button" data-jump="g-bound">边界</button>
+              <button type="button" data-jump="g-faq">常见问题</button>
+            </nav>
+
+            <section id="g-feishu">
+              <h2>1. 飞书应用</h2>
+              <ol>
+                <li>打开 <a href="https://open.feishu.cn/app" target="_blank" rel="noreferrer">飞书开放平台</a>，建企业自建应用，名称填 <b data-brand="name">AI 资讯</b>（拉群时搜这个名字）。</li>
+                <li>应用能力 → 机器人 → 打开。</li>
+                <li>事件与回调 → <b>使用长连接接收事件</b>（不要填 webhook）。订阅 <code>im.message.receive_v1</code>。后台服务要先在跑，长连接才能挂上。</li>
+                <li>开通下面的权限，<b>创建版本并发布</b>。改权限后必须再发一版。</li>
+                <li>到本站 <a href="#/settings">设置</a> 填写应用 ID 和密钥，保存并连接。</li>
+              </ol>
+            </section>
+
+            <section id="g-perm">
+              <h2>2. 权限</h2>
+              <p>开放平台搜中文名或下面的 scope。没发布的权限等于没开。</p>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>权限</th><th>Scope</th><th></th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>获取群聊中 @ 机器人的消息</td>
+                      <td><code>im:message.group_at_msg:readonly</code></td>
+                      <td><span class="tag ok">必开</span></td>
+                    </tr>
+                    <tr>
+                      <td>以应用的身份发消息</td>
+                      <td><code>im:message:send_as_bot</code></td>
+                      <td><span class="tag ok">必开</span></td>
+                    </tr>
+                    <tr>
+                      <td>获取群组信息</td>
+                      <td><code>im:chat:read</code></td>
+                      <td><span class="tag ok">必开</span></td>
+                    </tr>
+                    <tr>
+                      <td>获取用户发给机器人的单聊消息</td>
+                      <td><code>im:message.p2p_msg:readonly</code></td>
+                      <td><span class="tag">可选</span></td>
+                    </tr>
+                    <tr>
+                      <td>添加消息表情回复</td>
+                      <td><code>im:message.reactions:write_only</code></td>
+                      <td><span class="tag">可选</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="hint">「获取群组信息」开放平台也可能写成 <code>im:chat:readonly</code>。后台列群名、提问人姓名都走这条，不另要通讯录权限。没发版时勾选仍可用，只是看不到名字，错误码常见 <code>99991672</code>。</p>
+            </section>
+
+            <section id="g-grok">
+              <h2>3. 登录 Grok</h2>
+              <p>到 <a href="#/settings">设置</a> → Grok 订阅，走官方 device-code，不是 API key。凭据写在本机 <code>data/xai-auth.json</code>，不要和其他项目共用。左边栏 Grok 灯变绿之后，群里才能写出简报。模型默认快模型，点选立刻生效。</p>
+            </section>
+
+            <section id="g-group">
+              <h2>4. 拉群并打开开关</h2>
+              <ol>
+                <li>在飞书里把 <b data-brand="name">AI 资讯</b> 拉进目标群。</li>
+                <li>打开 <a href="#/board">群看板</a>，点刷新。</li>
+                <li>每个群两个开关，互相独立：<b>开通</b> = 群里 @ 才回答；<b>早报</b> = 按设置里的时间发到该群，当天只发一次。</li>
+              </ol>
+              <p class="hint">不必手填群 ID。私聊是总开关，在设置里，默认关。</p>
+            </section>
+
+            <section id="g-ask">
+              <h2>5. 群里怎么问</h2>
+              <p>只在已开通的群里，@ 机器人问今天、热点、日报、AA榜 / 模型榜 / 哪个模型最强、Tibo重置 / 重置预测 / Codex 额度 / 重置卡，或某个公司 / 模型。回复发在群里，不进话题。简报不写数据来自哪，标题链到原文。AA榜和 Tibo 重置发卡片，不走 Grok。没有未确认预告时，卡片会带官网同一套历史估计（仅供参考）。Tibo 新预告或确认完成时，也会推到已开通的群。</p>
+            </section>
+
+            <section id="g-bound">
+              <h2>6. 边界</h2>
+              <ul>
+                <li>只答 AI 资讯。不写代码、不闲聊、不调搜索。</li>
+                <li>简报用的是你自己的 Grok 订阅额度。这个版本不按条收费；要对用户收费，先换成按量 API key。</li>
+                <li>额度默认不限制，后台只统计今日调用。</li>
+              </ul>
+            </section>
+
+            <section id="g-faq">
+              <h2>7. 常见问题</h2>
+              <dl class="guide-faq">
+                <div><dt>@ 了没回</dt><dd>这个群还没开「开通」，或左边栏飞书 / Grok 不是绿灯。</dd></div>
+                <div><dt>看板没有群名</dt><dd>「获取群组信息」没发布。再发一版，然后刷新群。</dd></div>
+                <div><dt>私聊只提示</dt><dd>设置里「允许私聊」默认关。关掉时会回一句「请到已开通的群里 @ 我」，不走 Grok。</dd></div>
+                <div><dt>早报没收到</dt><dd>该群要单独开「早报」。同一天已发过的不会重发。时间在设置里改。</dd></div>
+              </dl>
+            </section>
+          </article>
+        </section>
+
+        <section class="view" id="view-board" data-view="board" hidden>
+          <div class="toolbar">
+            <label class="search">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm9.7 12.3-3.8-3.8 1.4-1.4 3.8 3.8-1.4 1.4z" /></svg>
+              <input id="board-q" type="search" placeholder="搜索群名或 ID" autocomplete="off" />
+            </label>
+            <div class="chips" role="tablist" aria-label="筛选">
+              <button type="button" class="chip on" data-filter="all">全部</button>
+              <button type="button" class="chip" data-filter="attention">待处理</button>
+              <button type="button" class="chip" data-filter="external">外部群</button>
+            </div>
+            <button class="ghost" id="chats-refresh" type="button">刷新群</button>
+          </div>
+          <p id="chats-error" class="warn" hidden></p>
+          <div id="board" class="board" aria-label="群看板"></div>
+        </section>
+
+        <section class="view" id="view-activity" data-view="activity" hidden>
+          <div class="split">
+            <div>
+              <div class="panel-head">
+                <h2>最近对话</h2>
+                <p class="hint">群里问过的最近 30 条，显示提问的人和所在群</p>
+              </div>
+              <ol id="turns" class="feed"></ol>
+            </div>
+            <aside>
+              <div class="panel-head">
+                <h2>今日调用</h2>
+                <p class="hint" id="usage-hint">按群累计，额度目前不限制</p>
+              </div>
+              <ul id="usage" class="usage"></ul>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="view-settings" data-view="settings" hidden>
+          <div class="settings-grid">
+            <article class="panel panel-wide">
+              <h2>飞书应用</h2>
+              <p class="hint">换应用 ID 和密钥后保存就会重连。开放平台链接只用来跳转。</p>
+              <div id="feishu-box"></div>
+            </article>
+            <article class="panel">
+              <h2>Grok 订阅</h2>
+              <p class="hint">官方 device-code，不是 API key。凭据写在本机 data/xai-auth.json，不要和其他项目共用。</p>
+              <div id="xai-box"></div>
+            </article>
+            <article class="panel">
+              <h2>模型</h2>
+              <p class="hint">资讯摘要默认用快模型，省周额度。点选后立刻生效。</p>
+              <div class="picker" id="model-picker"></div>
+            </article>
+            <article class="panel">
+              <h2>私聊</h2>
+              <p class="hint">默认关闭。这是总开关，和群里的开通互相独立。关闭时仍会回复提示。</p>
+              <label class="toggle">
+                <span class="toggle-copy">
+                  <b>允许私聊</b>
+                  <small>打开后任何人私聊都会消耗订阅额度。关闭时只提示去群里问，不走 Grok</small>
+                </span>
+                <span class="toggle-ui">
+                  <input type="checkbox" id="p2p-open" role="switch" />
+                  <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+                </span>
+              </label>
+            </article>
+            <article class="panel">
+              <h2>早报时间</h2>
+              <p class="hint">所有开了早报的群都在这个点发。上海时区，一天只生成一份稿。</p>
+              <div class="time-card" id="morning-clock"></div>
+            </article>
+            <article class="panel panel-wide" id="link-panel">
+              <h2>链路</h2>
+              <p class="hint">飞书长连接、Grok 登录，以及问答时拉取 AIHOT 的最近一次成功时间。</p>
+              <dl id="link-dl" class="facts"></dl>
+            </article>
+          </div>
+        </section>
+      </main>
+      <nav class="dock" aria-label="移动导航">
+        <a href="#/home" data-nav="home">首页</a>
+        <a href="#/board" data-nav="board">看板</a>
+        <a href="#/activity" data-nav="activity">动态</a>
+        <a href="#/guide" data-nav="guide">教程</a>
+        <a href="#/settings" data-nav="settings">设置</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" hidden>
+    <header>
+      <div>
+        <p class="eyebrow" id="drawer-lane"></p>
+        <h2 id="drawer-title">群</h2>
+      </div>
+      <button type="button" class="icon-btn" id="drawer-close" aria-label="关闭">×</button>
+    </header>
+    <div id="drawer-body"></div>
+  </aside>
+
+  <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+  <!--brand-boot-->
+  <script src="/admin.js?v=20260927tmpl"></script>
+</body>
+</html>

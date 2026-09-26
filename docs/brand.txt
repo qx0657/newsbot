@@ -1,0 +1,7 @@
+飞书开放平台填写。名称跟 .env 的 BOT_NAME / BOT_NAME_EN / BOT_TAGLINE 走，下面是默认值：
+
+应用名称：AI 资讯
+英文名：Newsbot
+短描述：群里的 AI 资讯简报员
+应用描述：在群里 @ 我，问今天、热点、日报，或某个公司 / 模型。资料来自 AIHOT，由 Grok 写成中文简报。不是通用助手，不写代码、不闲聊。
+头像：brand/avatar-240.png

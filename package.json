@@ -1,0 +1,23 @@
+{
+  "name": "newsbot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "飞书群 AI 资讯机器人模板：AIHOT 公开接口 + Grok 订阅简报，自带管理后台",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "test": "node --test test/*.test.js",
+    "xai:login": "node --env-file-if-exists=.env scripts/xai-login.mjs",
+    "xai:probe": "node --env-file-if-exists=.env scripts/xai-probe.mjs",
+    "ask": "node --env-file-if-exists=.env scripts/ask.mjs",
+    "morning": "node --env-file-if-exists=.env scripts/morning.mjs",
+    "codex": "node --env-file-if-exists=.env scripts/codex.mjs"
+  },
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.55.0"
+  }
+}

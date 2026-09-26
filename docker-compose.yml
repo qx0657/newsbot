@@ -1,0 +1,35 @@
+# 必须显式写项目名。管理后台绑回环，公开之前在前面加你自己的访问控制。
+name: newsbot
+
+services:
+  newsbot:
+    build: .
+    image: newsbot:latest
+    container_name: newsbot
+    restart: unless-stopped
+    init: true
+    env_file: .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: "3520"
+      DATA_DIR: /data
+    ports:
+      - "127.0.0.1:3520:3520"
+    volumes:
+      - ./data:/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3520/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
